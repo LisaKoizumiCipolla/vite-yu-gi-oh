@@ -3,19 +3,9 @@
         <div class="wrapper">
             
             <DropdownMenu 
-            @searched = "searchArchetype"
+            @selectionEvent="selectArchetype"
+            :dropdownList="archetypeList"
             />
-
-            <div class="dropdown menu-button">
-                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                </button>
-                <ul class="dropdown-menu">
-                    <li><button class="dropdown-item" href="#" type="button">Action</button></li>
-                    <li><button class="dropdown-item" href="#" type="button">Another action</button></li>
-                    <li><button class="dropdown-item" href="#" type="button">Something else here</button></li>
-                </ul>
-            </div>
 
             <div class="jumbo">
                 <div class="card-header">
@@ -40,9 +30,9 @@ export default {
 
     data(){
         return{
-            apiUrl: "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=70",
+            apiUrl: "https://db.ygoprodeck.com/api/v7/cardinfo.php",
             cardList : [],
-            archetypeUrl :"https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=all",
+            archetypeUrl :"https://db.ygoprodeck.com/api/v7/archetypes.php",
             archetypeList : []
         }
     },
@@ -53,7 +43,12 @@ export default {
 },
     
     created(){
-        axios.get(this.apiUrl)
+        axios.get(this.apiUrl, {
+            params: {
+                num : 20,
+                offset : 750
+            }
+        })
         .then( (response) => {
             this.cardList = response.data.data;
             console.log(response.data);
@@ -65,15 +60,37 @@ export default {
         
         axios.get(this.archetypeUrl)
         .then( (response) => {
-            this.archetypeListList = response.data.data;
-            console.log(response.data.data);
+            this.archetypeList = response.data.slice(60, 80);
+            console.log(this.archetypeList);
         })
         .catch(function (error) {
             console.log(error);
         })
     },
 
-    
+    methods : {
+
+        selectArchetype(archetype){
+
+            console.log(archetype)
+            axios.get(this.apiUrl, {
+                params : {
+                    num : 20,
+                    offset : 0,
+                    archetype : archetype
+                }
+            })
+
+            .then( (response) => {
+                this.cardList = response.data.data;
+                console.log(response.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+            
+        }
+    }
     
 }
 </script>

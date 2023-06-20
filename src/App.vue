@@ -1,13 +1,15 @@
 <script >
 import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
+import { Dropdown } from 'bootstrap';
 
 export default {
     name: 'App',
 
     components:{
       AppHeader,
-      AppMain
+      AppMain,
+      
     }
 }
 </script>
@@ -21,5 +23,6 @@ export default {
 
 @import "./styles/general.scss";
 @import "bootstrap/scss/bootstrap";
+
 
 </style>
