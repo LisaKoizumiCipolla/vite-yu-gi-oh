@@ -21,7 +21,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
     .card{
         width: calc((100% / 5) - 20px);
         margin-bottom: 20px;

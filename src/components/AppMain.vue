@@ -2,14 +2,14 @@
     <div class="main-section">
         <div class="wrapper">
             
-            <div class="dropdown">
-                <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    Alien
+            <div class="dropdown menu-button">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Dropdown
                 </button>
                 <ul class="dropdown-menu">
-                    <li><button class="dropdown-item" type="button">Alien</button></li>
-                    <li><button class="dropdown-item" type="button">Another action</button></li>
-                    <li><button class="dropdown-item" type="button">Something else here</button></li>
+                    <li><button class="dropdown-item" href="#" type="button">Action</button></li>
+                    <li><button class="dropdown-item" href="#" type="button">Another action</button></li>
+                    <li><button class="dropdown-item" href="#" type="button">Something else here</button></li>
                 </ul>
             </div>
 
@@ -35,7 +35,7 @@ export default {
 
     data(){
         return{
-            apiUrl: "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0",
+            apiUrl: "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=70",
             cardList : []
         }
     },
@@ -64,7 +64,7 @@ export default {
         margin: 0 auto;
     }
 
-    .dropdown{
+    .menu-button{
         padding: 30px 15px;
     }
     
