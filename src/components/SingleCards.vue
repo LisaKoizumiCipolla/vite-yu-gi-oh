@@ -1,5 +1,5 @@
 <template>
-    <div class="card">
+    <div class="card" id="background">
         <img :src="img" alt="">
         <h3>
             {{ name }}
@@ -24,7 +24,21 @@ export default {
 <style lang="scss">
     .card{
         width: calc((100% / 5) - 20px);
-        height: 200px;
+        margin-bottom: 20px;
+
+        h3{
+            color: white;
+            font-weight: 700;
+            padding: 25px;
+        }
+
+        h4{
+            color: black;
+            
+        }
+    }
+
+    #background {
         background-color: #D48F38;
     }
 </style>

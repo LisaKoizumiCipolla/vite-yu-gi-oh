@@ -1,7 +1,7 @@
 <template>
     <div class="card-wrapper">
         <SingleCards v-for="card in cardList"
-        :img = "card.card_images.image_url"
+        :img = "card.card_images.length > 0 ? card.card_images[0].image_url : ''"
         :name = "card.name"
         :archetype = "card.archetype"
         />
@@ -10,14 +10,11 @@
 
 <script>
 import SingleCards from './SingleCards.vue';
-import axios from 'axios';
 
 export default {
 
     data(){
         return{
-            cardList : [],
-            apiUrl: "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0"
         }
     },
 
@@ -25,16 +22,11 @@ export default {
         SingleCards
     },
 
-    created(){
-        axios.get(this.apiUrl)
-        .then( (response) => {
-            this.cardList = response.data.data;
-            console.log(response.data);
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
+    props : {
+        cardList : Array
     }
+
+    
     
 }
 </script>
@@ -45,5 +37,6 @@ export default {
         flex-wrap: wrap;
         justify-content: space-between;
         background-color: #D48F38;
+        text-align: center;
     }
 </style>
