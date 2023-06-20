@@ -2,6 +2,10 @@
     <div class="main-section">
         <div class="wrapper">
             
+            <DropdownMenu 
+            @searched = "searchArchetype"
+            />
+
             <div class="dropdown menu-button">
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Dropdown
@@ -29,20 +33,24 @@
 </template>
 <script>
 import CardList from './CardList.vue';
-import axios from 'axios'
+import axios from 'axios';
+import DropdownMenu from './DropdownMenu.vue';
 
 export default {
 
     data(){
         return{
             apiUrl: "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=70",
-            cardList : []
+            cardList : [],
+            archetypeUrl :"https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=all",
+            archetypeList : []
         }
     },
 
     components : {
-        CardList
-    },
+    CardList,
+    DropdownMenu
+},
     
     created(){
         axios.get(this.apiUrl)
@@ -52,8 +60,20 @@ export default {
         })
         .catch(function (error) {
             console.log(error);
+        });
+
+        
+        axios.get(this.archetypeUrl)
+        .then( (response) => {
+            this.archetypeListList = response.data.data;
+            console.log(response.data.data);
         })
-    }
+        .catch(function (error) {
+            console.log(error);
+        })
+    },
+
+    
     
 }
 </script>
