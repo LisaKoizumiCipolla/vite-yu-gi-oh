@@ -1,7 +1,7 @@
 <template>
-    <div>
-        <SingleCards v-for="card in CardList"
-        :img = "card.image_url"
+    <div class="card-wrapper">
+        <SingleCards v-for="card in apiUrl"
+        :img = "card.card_images.image_url"
         :name = "card.name"
         :archetype = "card.archetype"
         />
@@ -16,6 +16,7 @@ export default {
 
     data(){
         return{
+            
             apiUrl: "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0"
         }
     },
@@ -27,7 +28,7 @@ export default {
     created(){
         axios.get(this.apiUrl)
         .then( (response) => {
-            console.log(response.data.results);
+            console.log(response.data);
         })
         .catch(function (error) {
             console.log(error);
@@ -38,5 +39,8 @@ export default {
 </script>
 
 <style lang="scss">
-    
+    .card-wrapper{
+        display: flex;
+        flex-wrap: wrap;
+    }
 </style>
