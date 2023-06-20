@@ -25,5 +25,6 @@ export default {
     .card{
         width: calc((100% / 5) - 20px);
         height: 200px;
+        background-color: #D48F38;
     }
 </style>

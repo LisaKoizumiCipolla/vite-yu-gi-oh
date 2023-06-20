@@ -40,9 +40,9 @@ export default {
 <style lang="scss" scoped>
     .main-section{
         background-color: #D48F38;
-        height: 1000px;
         display: flex;
         margin: 0 auto;
+        height: 100vh;
     }
 
     .dropdown{
@@ -52,18 +52,18 @@ export default {
     .jumbo{
         background-color: white;
         width: 100%;
-        height: 800px;
+        padding: 70px;
     }
 
     .card-wrapper{
         background-color: white;
         width: 100%;
-        padding: 65px;
     }
 
     .card-header{
         background-color: black;
         color: white;
+        width: 100%;
     }
 
     h2{
